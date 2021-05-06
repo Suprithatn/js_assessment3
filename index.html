@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>Money Calculation</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6 col-xs-offset-3 border">
+                    <div class="row text-center heading">
+                        <h3 class="text-white">Get Money</h3>
+                    </div>
+                    <div class="row">
+                        <form method="post">
+                            <div class="form-group">
+                                <label for="username">Kms Travelled:</label>
+                                <input type="number" name="kmsTravelled" class="form-control">
+                            </div>
+                            <div class="form-group text-center">
+                                <button class="btn btn-primary" onclick="return calculateMoney()">Calculate</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+
+            function calculateMoney(){
+                var elementkmsTravelled = document.getElementsByName("kmsTravelled")[0];
+    
+                if( elementkmsTravelled.value.trim() === "" ){
+                    alert("Enter Kms Travelled!");
+                } else if ( ( elementkmsTravelled.value.trim() > 32767 ) || ( elementkmsTravelled.value.trim() < 0 ) ){
+                    alert("Invalid input!");
+                } else {
+                    var arrayNum = elementkmsTravelled.value.trim().toString().split('').map(Number);
+                    product = arrayNum.reduce((total, value, index, array) => {
+                        return total * value;
+                    });
+                    alert("Total Money Won : "+ product);
+                }
+                return false;
+                
+            }
+
+        </script>
+    </body>
+</html>
